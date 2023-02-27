@@ -1,1 +1,1 @@
-# Week-18-Challenge-NoSQL-ocial-Network-API
+# Week-18-Challenge-NoSQL-Social-Network-API
