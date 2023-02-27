@@ -28,7 +28,19 @@ const userSchema = new Schema(
         }
     ]
   },
+  {
+    toJSON: {
+        virtuals: true,
+    },
+    // makes sure there are not two id numbers
+    id: false,
+  }
 );
+
+userSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
+});
+
 // Creates the model
 const User = model('User', userSchema)
 
