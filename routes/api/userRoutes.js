@@ -44,4 +44,31 @@ router.post('/', async (req, res) => {
 });
 
 
+// Update user by id
+router.put('/:id', async (req, res) => {
+  const id = req.params.id;
+  const { name, email } = req.body;
+
+  try {
+    // Find user by id
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update user
+    user.name = name || user.name;
+    user.email = email || user.email;
+    await user.save();
+
+    // Return updated user
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
 module.exports = router;

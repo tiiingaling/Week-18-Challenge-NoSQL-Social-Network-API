@@ -45,4 +45,26 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Update user by id
+router.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { thoughtText, username } = req.body;
+  
+    try {
+      const updatedThought = await Thought.findByIdAndUpdate(id, {
+        thoughtText,
+        username,
+      }, { new: true });
+  
+      if (!updatedThought) {
+        return res.status(404).json({ message: 'Thought not found' });
+      }
+  
+      res.status(200).json(updatedThought);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+  
 module.exports = router;
