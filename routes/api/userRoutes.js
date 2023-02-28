@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const User = require('../../models/User');
 
 // GET all users
-router.get('/users', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -16,7 +16,7 @@ router.get('/users', async (req, res) => {
 });
 
 // GET a single user by its _id and populated thought and friend data
-router.get('/users/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
       .populate('thoughts')
@@ -30,7 +30,7 @@ router.get('/users/:id', async (req, res) => {
   }
 });
 
-router.post('/users', async (req, res) => {
+router.post('/', async (req, res) => {
   const user = new User({
     name: req.body.name,
     email: req.body.email,

@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const Thought = require('../../models/Thoughts');
 
 // GET all thoughts
-router.get('/thoughts', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const thoughts = await Thought.find();
     res.json(thoughts);
@@ -16,7 +16,7 @@ router.get('/thoughts', async (req, res) => {
 });
 
 // GET a single thought by its _id and populated thought and friend data
-router.get('/thoughts/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const thought = await Thought.findById(req.params.id)
       .populate('reactions')
@@ -31,7 +31,7 @@ router.get('/thoughts/:id', async (req, res) => {
 });
 
 // POST a new thought
-router.post('/thoughts', async (req, res) => {
+router.post('/', async (req, res) => {
   const thought = new Thought({
     thoughtText: req.body.thoughtText,
     username: req.body.username,
