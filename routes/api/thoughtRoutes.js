@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 // Import your Thought schema here
-const Thought = require('../models/Thought');
+const Thought = require('../../models/Thoughts');
 
 // GET all thoughts
 router.get('/thoughts', async (req, res) => {

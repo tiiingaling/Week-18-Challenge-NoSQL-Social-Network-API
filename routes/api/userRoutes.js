@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 // Import your User schema here
-const User = require('../models/User');
+const User = require('../../models/User');
 
 // GET all users
 router.get('/users', async (req, res) => {
