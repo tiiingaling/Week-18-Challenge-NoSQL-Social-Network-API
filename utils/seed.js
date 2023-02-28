@@ -12,17 +12,14 @@ db.once('open', async () => {
       {
         name: 'John Doe',
         email: 'john@gmail.com',
-        age: 25
       },
       {
         name: 'Jane Smith',
         email: 'jane@gmail.com',
-        age: 30
       },
       {
         name: 'Bob Johnson',
         email: 'bob@gmail.com',
-        age: 20
       }
     ]);
 

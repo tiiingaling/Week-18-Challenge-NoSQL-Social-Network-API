@@ -30,19 +30,18 @@ router.get('/users/:id', async (req, res) => {
   }
 });
 
-// POST a new user
 router.post('/users', async (req, res) => {
   const user = new User({
     name: req.body.name,
     email: req.body.email,
-    age: req.body.age
   });
   try {
     const newUser = await user.save();
-    res.status(201).json(newUser);
+    res.status(201).json(newUser); // Return a 201 status code
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
+
 
 module.exports = router;
