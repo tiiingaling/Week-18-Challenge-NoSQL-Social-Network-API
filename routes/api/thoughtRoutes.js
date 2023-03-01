@@ -29,6 +29,7 @@ router.delete('/:thoughtId', deleteThought);
 // POST new reaction
 router.post('/:thoughtId/reactions', addReaction)
 // DELETE reaction via id
-router.delete('/:thoughtId/reactions/reactionId', deleteReaction)
+router.delete('/:thoughtId/reactions/:reactionId', deleteReaction)
+
 
 module.exports = router;

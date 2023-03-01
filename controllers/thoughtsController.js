@@ -98,12 +98,14 @@ const thoughtsController = {
   },
   // Delete a reaction
   deleteReaction(req, res) {
-    console.log()
+    console.log('deleteReaction called')
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $pull: { reactions: { reactionsId: req.params.reactionsId } } },
-      { runValidators: true, new: true }
+      { $pull: { reactions: { reactionId: req.params.reactionId } } },
+      { runValidators: true, new: true },
+      console.log(`thoughtId: ${req.params.thoughtId}, reactionId: ${req.params.reactionId}`),
     )
+    
       .then((thought) =>
         !thought
           ? res
