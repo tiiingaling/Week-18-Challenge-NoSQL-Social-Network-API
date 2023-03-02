@@ -60,4 +60,29 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+
+// Add a friend to user via userId
+addFriend(req, res) {
+  const friendId = req.params.friendId;
+
+  User.findOneAndUpdate(
+    { _id: req.params.userId },
+    { $addToSet: { friends: friendId } },
+    { new: true }
+  )
+    .populate('friends', 'username')
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ message: 'No user with this id!' });
+      }
+      res.json({ message: `Added friend ${friendId} to user ${user.username}`, user });
+    })
+    .catch((err) => {
+      console.log('error:',err);
+      res.status(500).json(err);
+    });
+}
+
+
 };
